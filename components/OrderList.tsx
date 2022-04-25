@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { View, Text, Button } from "react-native";
 import config from "./../config/config.json";
 import orderModel from "../models/orders.ts";
+import { Base, Typography, Form } from '../styles';
 
 export default function OrderList({ route, navigation }) {
     const { reload } = route.params || false;
@@ -33,7 +34,7 @@ export default function OrderList({ route, navigation }) {
 
     return (
         <View>
-            <Text>Ordrar redo att plockas</Text>
+            <Text style={Typography.hForWhite}>Ordrar redo att plockas</Text>
             {listOfOrders}
         </View>
     );

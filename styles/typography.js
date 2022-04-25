@@ -31,3 +31,8 @@ export const stockHeader = {
     fontSize: 22,
     fontWeight: "bold"
 };
+
+export const hForWhite = {
+    color: "#3A3B3C",
+    fontSize: 22,
+};

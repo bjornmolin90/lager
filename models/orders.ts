@@ -42,6 +42,13 @@ const orders = {
         .then(function (response) {
 
         });
+    },
+
+    getOrder: async function getOrders(order_id) {
+        const response = await fetch(`${config.base_url}/orders/${order_id}?api_key=${config.api_key}`);
+        const result = await response.json();
+
+        return result.data;
     }
 };
 
