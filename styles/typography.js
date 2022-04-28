@@ -20,6 +20,12 @@ export const h2 = {
     paddingBottom: 10
 };
 
+export const h3 = {
+    color: textColor,
+    fontSize: 24,
+    paddingBottom: 8
+};
+
 export const text = {
     color: textColor,
     fontSize: 18,

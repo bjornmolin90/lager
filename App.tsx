@@ -7,6 +7,7 @@ import Pick from "./components/Pick.tsx";
 import Deliveries from "./components/Deliveries.tsx";
 import Auth from "./components/auth/Auth.tsx";
 import Invoices from "./components/auth/Invoices.tsx";
+import Ship from "./components/ship/Ship.tsx";
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Base, Typography } from './styles';
@@ -20,10 +21,12 @@ const routeIcons = {
   "Leverans": "car",
   "Logga in": "lock-open-outline",
   "Faktura": "document-outline",
+  "Skicka": "arrow-forward-circle",
 };
 
 export default function App() {
   const [products, setProducts] = useState([]);
+  const [allOrders, setAllOrders] = useState([]);
   const [isLoggedIn, setIsLoggedIn] = useState<Boolean>(false);
 
     useEffect(async () => {
@@ -51,6 +54,9 @@ export default function App() {
           </Tab.Screen>
           <Tab.Screen name="Leverans">
             {() => <Deliveries products={products} setProducts={setProducts} />}
+          </Tab.Screen>
+          <Tab.Screen name="Skicka">
+          {() => <Ship allOrders={allOrders} setAllOrders={setAllOrders} />}
           </Tab.Screen>
           {isLoggedIn ?
               <Tab.Screen name="Faktura">
