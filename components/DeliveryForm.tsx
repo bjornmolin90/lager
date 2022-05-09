@@ -23,6 +23,7 @@ export default function DeliveryForm({ navigation }) {
                     setDelivery({ ...delivery, comment: content })
                 }}
                 value={delivery?.comment}
+                testID="comment-field"
             />
 
             <Text style={Typography.text}>Antal</Text>
@@ -32,6 +33,7 @@ export default function DeliveryForm({ navigation }) {
             }}
             value={delivery?.amount?.toString()}
             keyboardType="numeric"
+            testID="amount-field"
             />
 
             <Text style={Typography.text}>Produkt</Text>
@@ -52,6 +54,7 @@ export default function DeliveryForm({ navigation }) {
                 onPress={() => {
                     addDelivery();
                 }}
+                accessibilityLabel={`Gör inleverans genom att trycka`}
             />
         </ScrollView>
     );
@@ -64,7 +67,6 @@ export default function DeliveryForm({ navigation }) {
             stock: (currentProduct.stock || 0) + (delivery.amount || 0),
             api_key: config.api_key
         };
-        console.log(updatedProduct);
 
         await productModel.updateProduct(updatedProduct);
 

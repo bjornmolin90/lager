@@ -2,6 +2,7 @@ import Auth from '../../interfaces/auth';
 import { useState } from 'react';
 import AuthModel from '../../models/auth';
 import AuthFields from './AuthFields';
+import { showMessage } from "react-native-flash-message";
 
 export default function Register({navigation}) {
     const [auth, setAuth] = useState<Partial<Auth>>({});
@@ -11,6 +12,13 @@ export default function Register({navigation}) {
             const result = await AuthModel.register(auth.email, auth.password);
 
             navigation.navigate("Login");
+        } else
+        {
+            showMessage({
+                message: "Saknas",
+                description: "E-post eller lösenord saknas",
+                type: "warning",
+            });
         }
     }
 

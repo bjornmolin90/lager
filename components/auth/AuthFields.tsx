@@ -14,6 +14,7 @@ export default function AuthFields({ auth, setAuth, title, submit, navigation}) 
                 value={auth?.email}
                 keyboardType="email-address"
                 autoCapitalize="none"
+                testID="email-field"
             />
             <Text style={Typography.label}>Lösenord</Text>
             <TextInput
@@ -24,12 +25,14 @@ export default function AuthFields({ auth, setAuth, title, submit, navigation}) 
                 value={auth?.password}
                 autoCapitalize="none"
                 secureTextEntry={true}
+                testID="password-field"
             />
             <Button
                 title={title}
                 onPress={() => {
                     submit();
                 }}
+                accessibilityLabel={`${title} genom att trycka`}
             />
             {title === "Logga in" &&
                 <Button

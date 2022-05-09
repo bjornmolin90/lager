@@ -1,5 +1,6 @@
 import config from "../config/config.json";
 import productsModel from "./products"
+import { showMessage } from "react-native-flash-message";
 
 const deliveries = {
     getDeliveries: async function getDeliveries() {
@@ -17,8 +18,15 @@ const deliveries = {
             api_key: config.api_key,
             comment: delivery.comment,
         }
-
+        if (newDelivery.amount == null || newDelivery.delivery_date == null) {
+            showMessage({
+                message: "Saknas",
+                description: "Antal eller leveransdag saknas",
+                type: "warning",
+            });
+        } else {
         await deliveries.updateDelivery(newDelivery);
+        }
     },
 
     updateDelivery: async function updateDelivery(delivery) {

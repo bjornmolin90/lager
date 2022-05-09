@@ -28,6 +28,7 @@ export default function OrderList({ route, navigation, allOrders, setAllOrders }
                         order: order
                     });
                 }}
+                accessibilityLabel={`Tryck för att få fram ${order.name}`}
             />
         });
 
